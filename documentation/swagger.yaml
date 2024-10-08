@@ -1,0 +1,230 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Projeto FlexiLease Autos 🚜",
+    "version": "1.0.0",
+    "description": "API para gerenciar uma concessionária de veículos. A API permite o cadastro de usuários, carros e reservas."
+  },
+  "paths": {
+    "/v1/car": {
+      "post": {
+        "summary": "Cadastrar um novo carro",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "modelo": { "type": "string" },
+                  "cor": { "type": "string" },
+                  "ano": { "type": "integer" },
+                  "valor_por_dia": { "type": "number" },
+                  "acessorios": { "type": "array", "items": { "type": "string" } },
+                  "numero_passageiros": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Carro cadastrado com sucesso" },
+          "400": { "description": "Erro na requisição" }
+        }
+      },
+      "get": {
+        "summary": "Listar todos os carros",
+        "responses": {
+          "200": {
+            "description": "Lista de carros",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "modelo": { "type": "string" },
+                      "cor": { "type": "string" },
+                      "ano": { "type": "integer" },
+                      "valor_por_dia": { "type": "number" },
+                      "acessorios": { "type": "array", "items": { "type": "string" } },
+                      "numero_passageiros": { "type": "integer" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/car/{id}": {
+      "get": {
+        "summary": "Obter detalhes de um carro específico",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Detalhes do carro" },
+          "404": { "description": "Carro não encontrado" }
+        }
+      },
+      "put": {
+        "summary": "Atualizar informações de um carro",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "modelo": { "type": "string" },
+                  "cor": { "type": "string" },
+                  "ano": { "type": "integer" },
+                  "valor_por_dia": { "type": "number" },
+                  "acessorios": { "type": "array", "items": { "type": "string" } },
+                  "numero_passageiros": { "type": "integer" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Carro atualizado" },
+          "404": { "description": "Carro não encontrado" }
+        }
+      },
+      "delete": {
+        "summary": "Deletar um carro",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Carro deletado com sucesso" },
+          "404": { "description": "Carro não encontrado" }
+        }
+      },
+      "patch": {
+        "summary": "Atualizar parcialmente as informações de um carro",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cor": { "type": "string" },
+                  "valor_por_dia": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Carro atualizado parcialmente" },
+          "404": { "description": "Carro não encontrado" }
+        }
+      }
+    },
+    "/v1/user": {
+      "post": {
+        "summary": "Cadastrar um novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": { "type": "string" },
+                  "email": { "type": "string" },
+                  "senha": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Usuário cadastrado com sucesso" },
+          "400": { "description": "Erro na requisição" }
+        }
+      }
+    },
+    "/v1/reserva": {
+      "post": {
+        "summary": "Criar uma nova reserva",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "carId": { "type": "string" },
+                  "userId": { "type": "string" },
+                  "data_inicio": { "type": "string", "format": "date" },
+                  "data_fim": { "type": "string", "format": "date" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Reserva criada com sucesso" },
+          "400": { "description": "Erro na requisição" }
+        }
+      },
+      "get": {
+        "summary": "Listar todas as reservas",
+        "responses": {
+          "200": {
+            "description": "Lista de reservas",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "carId": { "type": "string" },
+                      "userId": { "type": "string" },
+                      "data_inicio": { "type": "string", "format": "date" },
+                      "data_fim": { "type": "string", "format": "date" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
