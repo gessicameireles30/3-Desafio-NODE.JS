@@ -15,31 +15,16 @@ export class CreateReserves1728054425205 implements MigrationInterface {
           generationStrategy: 'increment',
         },
         {
-          name: 'user_id',
-          type: 'int'
-        },
-        {
-          name: 'model',
-          type: 'varchar(50)',
+          name: 'startDate',
+          type: 'datetime',
 
         },
         {
-          name: 'color',
-          type: 'varchar(30)'
+          name: 'endDate',
+          type: 'datetime',
+
         },
 
-        {
-          name: 'year',
-          type: 'int'
-        },
-        {
-          name: 'valuePerDay',
-          type: 'int'
-        },
-        {
-          name: 'numberOfPassengers',
-          type: 'int'
-        }
       ],
       foreignKeys: [
         {

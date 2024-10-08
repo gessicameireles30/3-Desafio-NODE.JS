@@ -38,6 +38,10 @@ export class CreateCars1728053507828 implements MigrationInterface {
             type: 'int'
           },
           {
+            name: 'acessories',
+            type: 'varchar(30)'
+          },
+          {
             name: 'numberOfPassengers',
             type: 'int'
           }
