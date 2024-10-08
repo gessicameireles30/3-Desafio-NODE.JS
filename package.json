@@ -6,25 +6,36 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts",
     "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --ext .ts --fix"
+    "lint-fix": "eslint . --ext .ts --fix",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js --dataSource ./src/database/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.7.4",
     "@typescript-eslint/eslint-plugin": "^8.8.0",
     "@typescript-eslint/parser": "^8.8.0",
     "eslint": "^9.11.1",
+    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.2"
   },
   "dependencies": {
     "3-desafio-node.js": "file:",
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
+    "celebrate": "^15.0.3",
+    "class-transformer": "^0.5.1",
     "express": "^4.21.0",
+    "express-async-errors": "^3.1.1",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
     "reflect-metadata": "^0.2.2",
     "sqlite3": "^5.1.7",
     "typeorm": "^0.3.20"
