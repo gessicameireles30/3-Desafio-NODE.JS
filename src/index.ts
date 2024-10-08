@@ -1,14 +1,16 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import { AppDataSource } from "./database/data-souce";
+import { AppDataSource } from "./database/data-source";
 import AppError from "./api/middlewares/AppError";
+import routes from "./routes";
 
 AppDataSource.initialize()
   .then(async () => {
     const app = express();
     app.use(bodyParser.json());
 
-    app.listen(3000);
+    app.use(routes);
+
     app.use(
       (
         error: Error,
