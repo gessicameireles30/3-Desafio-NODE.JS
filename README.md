@@ -10,7 +10,7 @@
 - [Instalação](#instalação)
 - [Endpoints ](#Endpoints)
 - [Como Usar](#como-usar)
-- [Desenvolvedores](#Desenvolvedores)
+- [Desenvolvedora](#Desenvolvedora)
 
 ## Sobre o Projeto
 
